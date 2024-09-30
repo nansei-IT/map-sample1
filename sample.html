@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap サンプルページ</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>OpenStreetMapの表示例（宮古島）</h1>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 地図の初期設定（宮古島）
+        var map = L.map('map').setView([24.8056, 125.2817], 12);  // 宮古島の緯度経度とズームレベル
+
+        // OpenStreetMapタイルを読み込む
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // マーカーを宮古島に追加
+        var marker = L.marker([24.8056, 125.2817]).addTo(map);
+        marker.bindPopup("<b>宮古島</b><br>ここは宮古島です。").openPopup();
+    </script>
+
+</body>
+</html>
